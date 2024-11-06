@@ -114,10 +114,31 @@ function caesarShift(char, num) {
   return shifted;
 }
 
-function isCapitalLetter(char) {
-  return /^[A-Z]$/.test(char);
-}
-
 function isLetter(char) {
   return /^[A-Za-z]$/.test(char);
+}
+
+export function analyzeArray(arr) {
+  return {
+    average: getAverage(arr),
+    min: getMin(arr),
+    max: getMax(arr),
+    length: arr.length,
+  };
+}
+
+function getAverage(arr) {
+  return (
+    arr.reduce((sum, x) => {
+      return sum + x;
+    }, 0) / arr.length
+  );
+}
+
+function getMin(arr) {
+  return Math.min(...arr);
+}
+
+function getMax(arr) {
+  return Math.max(...arr);
 }
