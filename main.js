@@ -26,3 +26,98 @@ export const calculator = {
     return a / b;
   },
 };
+
+export function caesarCipher(string, num) {
+  const arr = string.split('');
+
+  arr.forEach((char, index) => {
+    arr[index] = caesarShift(char, num);
+  });
+
+  return arr.join('');
+}
+
+function caesarShift(char, num) {
+  if (!isLetter(char)) return char;
+  let shifted = '';
+  const capitals = [
+    'A',
+    'B',
+    'C',
+    'D',
+    'E',
+    'F',
+    'G',
+    'H',
+    'I',
+    'J',
+    'K',
+    'L',
+    'M',
+    'N',
+    'O',
+    'P',
+    'Q',
+    'R',
+    'S',
+    'T',
+    'U',
+    'V',
+    'W',
+    'X',
+    'Y',
+    'Z',
+  ];
+  const lowerCases = [
+    'a',
+    'b',
+    'c',
+    'd',
+    'e',
+    'f',
+    'g',
+    'h',
+    'i',
+    'j',
+    'k',
+    'l',
+    'm',
+    'n',
+    'o',
+    'p',
+    'q',
+    'r',
+    's',
+    't',
+    'u',
+    'v',
+    'w',
+    'x',
+    'y',
+    'z',
+  ];
+
+  capitals.forEach((letter, index) => {
+    if (letter === char) {
+      let newIndex = (index + num) % 26;
+      shifted = capitals[newIndex];
+    }
+  });
+
+  lowerCases.forEach((letter, index) => {
+    if (letter === char) {
+      let newIndex = (index + num) % 26;
+      shifted = lowerCases[newIndex];
+    }
+  });
+
+  return shifted;
+}
+
+function isCapitalLetter(char) {
+  return /^[A-Z]$/.test(char);
+}
+
+function isLetter(char) {
+  return /^[A-Za-z]$/.test(char);
+}

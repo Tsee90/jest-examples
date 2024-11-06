@@ -27,3 +27,15 @@ test('calculator divide', () => {
 test('calculator divide by 0', () => {
   expect(() => main.calculator.divide(3, 0)).toThrow('Cannot divide by 0');
 });
+
+test('caesar cipher', () => {
+  expect(main.caesarCipher('xyz', 3)).toBe('abc');
+});
+
+test('caesar cipher', () => {
+  expect(main.caesarCipher('heLLo', 3)).toBe('khOOr');
+});
+
+test('caesar cipher', () => {
+  expect(main.caesarCipher('Hello, World!', 3)).toBe('Khoor, Zruog!');
+});
