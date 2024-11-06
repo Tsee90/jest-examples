@@ -1,1 +1,3 @@
-import * as Main from './main.js';
+export function capitalize(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
